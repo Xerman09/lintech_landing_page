@@ -1,0 +1,14 @@
+# GZIP compression for sig_*.png / jpg / gif / webp
+<IfModule mod_deflate.c>
+  <FilesMatch "^sig_.*\.(png|jpe?g|gif|webp)$">
+    SetOutputFilter DEFLATE
+  </FilesMatch>
+</IfModule>
+
+# CORS + Vary headers for those same files
+<IfModule mod_headers.c>
+  <FilesMatch "^sig_.*\.(png|jpe?g|gif|webp)$">
+    Header set Access-Control-Allow-Origin "https://dm3.dm3system.com"
+    Header set Vary "Origin,Accept-Encoding"
+  </FilesMatch>
+</IfModule>

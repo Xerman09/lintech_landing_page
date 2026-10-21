@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Post — Lintech Insights</title>
+  <meta name="description" content="Read this Lintech insight on IT solutions and best practices." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+</head>
+<body>
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand" href="index.html" aria-label="Lintech">Lintech</a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="blog.html">Blog</a>
+      <a href="index.html#contact">Contact</a>
+      <a href="index.html#cta" class="btn btn-primary">Get Started</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Open Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="blog.html">Blog</a>
+    <a href="index.html#contact">Contact</a>
+    <a href="index.html#cta" class="btn btn-primary">Get Started</a>
+  </div>
+</header>
+
+<section class="section" style="padding-top:48px">
+  <div class="container" id="postContainer" aria-live="polite">
+    <a href="blog.html" class="link">&larr; Back to Insights</a>
+    <article class="post">
+      <header class="post-header">
+        <h1 id="postTitle">Loading…</h1>
+        <p id="postMeta" class="muted"></p>
+      </header>
+      <img id="postImage" class="post-hero" src="" alt="" />
+      <div id="postBody" class="post-body"></div>
+    </article>
+  </div>
+</section>
+<style>
+.post-hero{ width:100%; max-height:420px; object-fit:cover; border-radius: var(--radius); box-shadow: var(--shadow); margin: 14px 0 10px;}
+.post-body p{ color: var(--text); margin: 0 0 14px; }
+.post-header h1{ margin-bottom:6px;}
+</style>
+<script src="assets/js/blog.js"></script>
+<script>
+  // Render a specific post based on ?slug=
+  renderPostFromQuery();
+</script>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a class="brand" href="index.html">Lintech</a>
+      <p class="muted">lintech.us.corp</p>
+    </div>
+    <nav class="footer-links" aria-label="Footer">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="blog.html">Blog</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <div class="footer-copy">
+      <p>Copyright &copy; 2025 Lintech</p>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

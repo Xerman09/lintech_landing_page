@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lintech — Customized IT Solutions & Virtual Assistance</title>
+  <meta name="description" content="Lintech provides tailored IT solutions and virtual assistant services to streamline operations and boost productivity." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+  <style>
+    .hero-art img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header / Nav -->
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/" aria-label="Lintech">Lintech</a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#home">Home</a>
+        <a href="about.html">About</a>
+        <a href="blog.html">Blog</a>
+        <a href="#contact">Contact</a>
+        <a href="#cta" class="btn btn-primary">Get Started</a>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Open Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#home">Home</a>
+      <a href="about.html">About</a>
+      <a href="blog.html">Blog</a>
+      <a href="#contact">Contact</a>
+      <a href="#cta" class="btn btn-primary">Get Started</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="home" class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">lintech.us.corp</p>
+        <h1>Empowering Your Business</h1>
+        <p class="subhead">Customized IT Solutions and Virtual Assistance for Your Business Success</p>
+        <p class="body">At <strong>Lintech</strong>, we provide tailored technology services designed to enhance productivity and streamline your operations efficiently.</p>
+        <div class="cta-row">
+          <a href="#cta" class="btn btn-primary">Get Started</a>
+          <a href="about.html" class="btn btn-ghost">Learn More</a>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <img src="assets/img/pexels-photo-12899151.jpeg" alt="" />
+      </div>
+    </div>
+    <div class="hero-shine" aria-hidden="true"></div>
+  </section>
+
+  <!-- Insights / Blog Preview -->
+  <section id="blog" class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>Insights</h2>
+        <p class="muted">Latest Articles — Explore our expert insights on technology trends and best practices to grow your business.</p>
+      </div>
+      <div class="grid cards-3">
+        <article class="card">
+          <img src="assets/img/img-1.webp" alt="Smiling diverse support team wearing headsets" />
+          <div class="card-body">
+            <h3>Crafting Captivating Headlines</h3>
+            <p>Engaging introductions: capturing your audience’s interest. The initial impression your…</p>
+            <a href="#" class="link">Read More</a>
+          </div>
+        </article>
+        <article class="card">
+          <img src="assets/img/img-2.webp" alt="Business team collaborating in a modern office" />
+          <div class="card-body">
+            <h3>The Art of Drawing Readers In</h3>
+            <p>Engaging introductions: capturing your audience’s interest. The initial impression your…</p>
+            <a href="#" class="link">Read More</a>
+          </div>
+        </article>
+        <article class="card">
+          <img src="assets/img/img-3.webp" alt="Two diverse call center agents with headsets" />
+          <div class="card-body">
+            <h3>Mastering the First Impression</h3>
+            <p>Engaging introductions: capturing your audience’s interest. The initial impression your…</p>
+            <a href="#" class="link">Read More</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="section section-alt">
+    <div class="container two-col">
+      <div>
+        <h2>Discover Lintech: Your Trusted IT Solution Partner Since 2019</h2>
+        <p>Lintech is dedicated to providing innovative IT solutions and virtual assistance that empower businesses of all sizes to optimize operations and improve productivity through technology expertise.</p>
+        <a href="#contact" class="btn btn-secondary">Read More</a>
+      </div>
+      <ul class="features">
+        <li>
+          <h4>Tailored Solutions</h4>
+          <p>Customized IT and virtual assistant services designed to meet your specific needs.</p>
+        </li>
+        <li>
+          <h4>Expert Staff</h4>
+          <p>Skilled professionals with extensive experience committed to exceptional support.</p>
+        </li>
+        <li>
+          <h4>Innovative Approach</h4>
+          <p>Cutting-edge technology and creative problem-solving to boost efficiency.</p>
+        </li>
+        <li>
+          <h4>Dependable Partner</h4>
+          <p>Trusted since 2019 for reliable, measurable results.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Email Subscription -->
+  <section class="section cta-subscribe" aria-labelledby="subscribeTitle">
+    <div class="container subscribe">
+      <div>
+        <h2 id="subscribeTitle">Join Us Today</h2>
+        <p>Subscribe to receive the latest updates on our innovative IT solutions and virtual assistance services tailored for you.</p>
+      </div>
+      <form class="subscribe-form" onsubmit="event.preventDefault(); alert('Thanks! We'll be in touch.');">
+        <label class="sr-only" for="email">Email Address</label>
+        <input id="email" type="email" placeholder="you@company.com" required />
+        <button class="btn btn-primary" type="submit">Get Started</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Helpful Tips -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>Helpful Tips</h2>
+        <p class="muted">Easy-to-Follow Guides — Make the most of our technology services and support.</p>
+      </div>
+      <div class="grid cards-3">
+        <article class="card">
+          <img src="assets/img/img-1.webp" alt="Support team" />
+          <div class="card-body">
+            <h3>Crafting Captivating Headlines</h3>
+            <p>Quick wins to improve engagement across your content and communications…</p>
+            <a href="#" class="link">Read More</a>
+          </div>
+        </article>
+        <article class="card">
+          <img src="assets/img/img-2.webp" alt="Team collaborating" />
+          <div class="card-body">
+            <h3>The Art of Drawing Readers In</h3>
+            <p>Structure your message to guide attention and build trust from the start…</p>
+            <a href="#" class="link">Read More</a>
+          </div>
+        </article>
+        <article class="card">
+          <img src="assets/img/img-3.webp" alt="Call center agents" />
+          <div class="card-body">
+            <h3>Mastering the First Impression</h3>
+            <p>Best practices to craft concise, compelling value propositions for IT buyers…</p>
+            <a href="#" class="link">Read More</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <h2>What Our Clients Say About Us</h2>
+        <p class="muted">Real stories from teams we’ve helped modernize.</p>
+      </div>
+      <div class="testimonials" id="testimonials" aria-live="polite">
+        <figure class="t-card active">
+          <blockquote>“We greatly appreciate the tailored solutions provided by Lintech. They have been a key component of our success.”</blockquote>
+          <figcaption>David Smith — Company Name</figcaption>
+        </figure>
+        <figure class="t-card">
+          <blockquote>“Fantastic experience! Lintech helped us integrate new software seamlessly into our operations.”</blockquote>
+          <figcaption>James Wilson — Company Name</figcaption>
+        </figure>
+        <figure class="t-card">
+          <blockquote>“Lintech transformed our workflow and enhanced our productivity significantly. Highly recommend!”</blockquote>
+          <figcaption>Sarah Johnson — Company Name</figcaption>
+        </figure>
+        <figure class="t-card">
+          <blockquote>“Their team delivered exceptional IT support when we needed it the most. A valuable partner.”</blockquote>
+          <figcaption>Michael Brown — Company Name</figcaption>
+        </figure>
+      </div>
+      <div class="t-controls">
+        <button class="t-prev" aria-label="Previous testimonial">&larr;</button>
+        <button class="t-next" aria-label="Next testimonial">&rarr;</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="cta" class="section cta-final">
+    <div class="container cta-inner">
+      <h2>Transform Your Business Today</h2>
+      <p>Contact us to learn how our IT solutions help your organization thrive with cutting-edge technology.</p>
+      <a href="#contact" class="btn btn-primary">Get Started</a>
+    </div>
+  </section>
+
+  <!-- Contact / Footer -->
+  <footer id="contact" class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="/">Lintech</a>
+        <p class="muted">lintech.us.corp</p>
+      </div>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="#home">Home</a>
+        <a href="about.html">About</a>
+        <a href="blog.html">Blog</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="footer-copy">
+        <p>Copyright &copy; 2025 Lintech</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
