@@ -249,9 +249,9 @@ p {
   transition: all 0.3s var(--ease-smooth);
 }
 .site-header.scrolled {
-  background: rgba(7, 9, 14, 0.82);
-  backdrop-filter: blur(18px) saturate(160%);
-  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  background: rgba(7, 9, 14, 0.85);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
   border-bottom: 1px solid var(--border-subtle);
 }
 
@@ -1406,6 +1406,9 @@ p {
   .quick-facts { grid-template-columns: 1fr 1fr; }
   .workbench-grid { grid-template-columns: 1fr; gap: 28px; }
   .configurator-card { grid-template-columns: 1fr; padding: 32px 24px; gap: 32px; }
+  .topology-grid { grid-template-columns: 1fr; gap: 16px; }
+  .topology-connector { display: none; }
+  .inspector-body { grid-template-columns: 1fr; gap: 20px; }
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
 }
 @media (max-width: 600px) {
@@ -1415,4 +1418,541 @@ p {
   .mockup-stat-row { grid-template-columns: 1fr; }
   .form-row { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr; }
+  .telemetry-item.hide-mobile { display: none; }
 }
+
+/* =========================================================
+   High-Tech Systems: Cyber Grid, Telemetry, Topology, Command Palette
+   ========================================================= */
+
+/* Background Cyber Grid Overlay */
+.bg-grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(ellipse 75% 55% at 50% 25%, #000 30%, transparent 85%);
+  -webkit-mask-image: radial-gradient(ellipse 75% 55% at 50% 25%, #000 30%, transparent 85%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* High-Tech Card Mouse Spotlight Glow */
+.service-card,
+.workbench-box,
+.configurator-card,
+.topology-node,
+.node-inspector,
+.pillar-box,
+.workflow-step,
+.fact-item {
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card::after,
+.workbench-box::after,
+.configurator-card::after,
+.topology-node::after,
+.pillar-box::after,
+.workflow-step::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(450px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(56, 189, 248, 0.1), transparent 70%);
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.service-card:hover::after,
+.workbench-box:hover::after,
+.configurator-card:hover::after,
+.topology-node:hover::after,
+.pillar-box:hover::after,
+.workflow-step:hover::after {
+  opacity: 1;
+}
+
+/* ---------- Top Telemetry Ribbon ---------- */
+.top-telemetry-ribbon {
+  height: 32px;
+  background: rgba(7, 9, 14, 0.95);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-tertiary);
+  backdrop-filter: blur(12px);
+  z-index: 101;
+}
+.telemetry-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.telemetry-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.telemetry-label {
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+.telemetry-val {
+  color: #cbd5e1;
+  font-weight: 500;
+}
+.telemetry-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--brand-green);
+  display: inline-block;
+}
+.telemetry-dot.pulse {
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.8);
+  animation: pulseDot 2s infinite ease-in-out;
+}
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+.telemetry-cmd-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.telemetry-cmd-btn:hover {
+  background: rgba(56, 189, 248, 0.15);
+  border-color: rgba(56, 189, 248, 0.4);
+  color: #ffffff;
+}
+.telemetry-cmd-btn kbd {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1px 4px;
+  border-radius: 3px;
+  font-size: 0.68rem;
+  color: #ffffff;
+}
+
+/* Nav Command Button */
+.btn-command-palette {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 38px;
+  padding: 0 12px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.btn-command-palette:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--border-hairline);
+  color: #ffffff;
+}
+.btn-command-palette svg {
+  width: 14px;
+  height: 14px;
+  color: var(--brand-cyan);
+}
+.btn-command-palette kbd {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 4px;
+  padding: 2px 5px;
+  font-size: 0.7rem;
+  color: var(--text-primary);
+}
+
+/* ---------- High-Tech System Topology Section ---------- */
+.topology-container {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  margin-top: 48px;
+}
+.topology-grid {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+  align-items: center;
+  gap: 12px;
+}
+.topology-connector {
+  display: grid;
+  place-items: center;
+  color: rgba(56, 189, 248, 0.4);
+  width: 36px;
+  flex-shrink: 0;
+}
+.topology-connector svg {
+  width: 36px;
+  height: 12px;
+  animation: signalDash 1.5s linear infinite;
+}
+@keyframes signalDash {
+  to { stroke-dashoffset: -12; }
+}
+
+.topology-node {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 24px 20px;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.25s var(--ease-spring);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  backdrop-filter: blur(14px);
+}
+.topology-node:hover {
+  border-color: var(--border-hairline);
+  transform: translateY(-2px);
+  background: rgba(26, 36, 56, 0.85);
+}
+.topology-node.active {
+  border-color: rgba(56, 189, 248, 0.6);
+  background: rgba(17, 24, 39, 0.95);
+  box-shadow: 0 0 24px -4px rgba(37, 99, 235, 0.35);
+}
+
+.node-status-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+.node-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--brand-cyan);
+  box-shadow: 0 0 8px rgba(6, 182, 212, 0.6);
+}
+.topology-node.active .node-dot {
+  background: var(--brand-green);
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.8);
+}
+.node-id {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: var(--text-tertiary);
+  font-weight: 500;
+}
+.topology-node h4 {
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.25;
+}
+.topology-node p {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+}
+.node-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-tertiary);
+}
+.node-tag {
+  font-size: 0.68rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+}
+.node-tag.warm {
+  background: rgba(249, 115, 22, 0.15);
+  color: #fb923c;
+  border-color: rgba(249, 115, 22, 0.3);
+}
+
+/* Node Inspector Terminal */
+.node-inspector {
+  background: #080b12;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+.inspector-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 24px;
+  background: rgba(14, 20, 32, 0.95);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.inspector-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #ffffff;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+.term-prompt {
+  color: var(--brand-cyan);
+}
+.inspector-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--brand-green);
+  font-size: 0.72rem;
+}
+.status-indicator {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--brand-green);
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.8);
+}
+
+.inspector-body {
+  padding: 26px 24px;
+  display: grid;
+  grid-template-columns: 1.2fr 1.2fr 1fr;
+  gap: 28px;
+}
+.inspector-col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.inspector-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--brand-cyan);
+  font-weight: 600;
+}
+.inspector-col p {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: #cbd5e1;
+}
+
+.inspector-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  background: rgba(11, 15, 23, 0.7);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--text-tertiary);
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.inspector-footer strong {
+  color: #ffffff;
+}
+
+/* ---------- High-Tech Command Palette Modal ---------- */
+.command-palette-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: rgba(3, 5, 8, 0.8);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  display: none;
+  place-items: center;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 0.2s var(--ease-smooth);
+}
+.command-palette-backdrop.open {
+  display: grid;
+  opacity: 1;
+}
+
+.command-palette-card {
+  width: min(100%, 640px);
+  background: #090d16;
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  border-radius: var(--radius-lg);
+  box-shadow: 
+    0 30px 80px -10px rgba(0, 0, 0, 0.95),
+    0 0 50px -10px rgba(37, 99, 235, 0.25);
+  overflow: hidden;
+  transform: scale(0.96);
+  transition: transform 0.2s var(--ease-spring);
+}
+.command-palette-backdrop.open .command-palette-card {
+  transform: scale(1);
+}
+
+.command-search-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(14, 20, 32, 0.6);
+}
+.command-search-header svg {
+  width: 18px;
+  height: 18px;
+  color: var(--brand-cyan);
+  flex-shrink: 0;
+}
+.command-search-input {
+  flex-grow: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  color: #ffffff;
+}
+.command-search-input::placeholder {
+  color: var(--text-tertiary);
+}
+.command-esc-badge {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--text-tertiary);
+  cursor: pointer;
+}
+
+.command-results-list {
+  max-height: 380px;
+  overflow-y: auto;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.command-category-title {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: 10px 12px 4px;
+}
+.command-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-secondary);
+}
+.command-item:hover, .command-item.active {
+  background: rgba(37, 99, 235, 0.18);
+  border-color: rgba(56, 189, 248, 0.35);
+  color: #ffffff;
+}
+.command-item-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.command-item-icon {
+  width: 16px;
+  height: 16px;
+  color: var(--brand-cyan);
+  flex-shrink: 0;
+}
+.command-item-title {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: #ffffff;
+}
+.command-item-desc {
+  font-size: 0.78rem;
+  color: var(--text-tertiary);
+  margin-left: 8px;
+}
+.command-item-badge {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-tertiary);
+}
+.command-item:hover .command-item-badge,
+.command-item.active .command-item-badge {
+  background: rgba(56, 189, 248, 0.2);
+  color: #38bdf8;
+}
+
+.command-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(7, 9, 14, 0.95);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+.command-footer-hints {
+  display: flex;
+  gap: 16px;
+}
+.command-footer-hints span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.command-footer-hints kbd {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 1px 4px;
+  border-radius: 3px;
+  color: var(--text-secondary);
+}
+
