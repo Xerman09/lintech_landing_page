@@ -3,71 +3,105 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Blog — Lintech Insights</title>
-  <meta name="description" content="Insights and innovations in IT solutions — articles, guides, and best practices from Lintech." />
+  <title>Articles &amp; Guides — Lintech Innovations Corp.</title>
+  <meta name="description" content="Technical and operational insights on software development, web engineering, digital marketing, and virtual assistance from the Lintech team." />
+  <meta name="theme-color" content="#090d16" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css" />
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
 </head>
 <body>
-<header class="site-header">
-  <div class="container nav">
-    <a class="brand" href="index.html" aria-label="Lintech">Lintech</a>
-    <nav class="nav-links" aria-label="Primary">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="blog.html">Blog</a>
-      <a href="index.html#contact">Contact</a>
-      <a href="index.html#cta" class="btn btn-primary">Get Started</a>
-    </nav>
-    <button class="hamburger" id="hamburger" aria-label="Open Menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="blog.html">Blog</a>
-    <a href="index.html#contact">Contact</a>
-    <a href="index.html#cta" class="btn btn-primary">Get Started</a>
-  </div>
-</header>
+  <div class="bg-ambient" aria-hidden="true"></div>
 
-<section class="hero" style="padding:56px 0 24px;">
-  <div class="container">
-    <p class="eyebrow">Insights</p>
-    <h1>Latest Articles</h1>
-    <p class="subhead">Explore expert guidance on technology trends and best practices to grow your business.</p>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container">
-    <div id="blogList" class="grid cards-3" aria-live="polite"></div>
-  </div>
-</section>
-
-<script src="assets/js/blog.js"></script>
-
-<footer class="site-footer">
-  <div class="container footer-grid">
-    <div class="footer-brand">
-      <a class="brand" href="index.html">Lintech</a>
-      <p class="muted">lintech.us.corp</p>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html" aria-label="Lintech Innovations Corp. Home">
+        <span class="brand-mark">L</span>
+        <div class="brand-text">
+          <strong>Lintech</strong>
+          <small>Innovations Corp.</small>
+        </div>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="index.html#services">Services</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#process">Workflow</a>
+        <a href="about.html">Company</a>
+        <a href="blog.html" class="active">Articles</a>
+      </nav>
+      <div class="nav-cta">
+        <a href="index.html#contact" class="btn btn-primary btn-sm">Get in Touch</a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobileMenu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
-    <nav class="footer-links" aria-label="Footer">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="blog.html">Blog</a>
-      <a href="index.html#contact">Contact</a>
-    </nav>
-    <div class="footer-copy">
-      <p>Copyright &copy; 2025 Lintech</p>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html#services">Services</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#process">Workflow</a>
+      <a href="about.html">Company</a>
+      <a href="blog.html">Articles</a>
+      <a href="index.html#contact" class="btn btn-primary btn-sm" style="margin-top: 8px;">Get in Touch</a>
     </div>
-  </div>
-</footer>
-<script src="assets/js/main.js"></script>
+  </header>
+
+  <main>
+    <section class="page-header">
+      <div class="container">
+        <div class="tag"><span>Engineering &amp; Operations</span></div>
+        <h1>Articles &amp; Field Notes</h1>
+        <p class="lead">Practical perspectives on software architecture, web performance, digital acquisition, and operational scalability.</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top: 0;">
+      <div class="container">
+        <div id="blogList" class="cards-3" aria-live="polite"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="index.html">
+            <span class="brand-mark">L</span>
+            <span class="brand-text">Lintech<small>Innovations Corp.</small></span>
+          </a>
+          <p>Technology and support that move your business forward. Dedicated software, web engineering, marketing, and operational virtual assistants.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Capabilities</h4>
+          <a href="index.html#software">Custom Software</a>
+          <a href="index.html#web">Web Development</a>
+          <a href="index.html#marketing">Digital Marketing</a>
+          <a href="index.html#va">Virtual Assistants</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="about.html">About Lintech</a>
+          <a href="blog.html">Articles &amp; Guides</a>
+          <a href="index.html#process">Our Workflow</a>
+          <a href="index.html#contact">Contact &amp; Scoping</a>
+        </div>
+        <div class="footer-col">
+          <h4>Office &amp; Domain</h4>
+          <span>lintech.us.corp</span>
+          <span style="color: var(--text-faint); margin-top: 8px;">Serving clients globally since 2019.</span>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; <span id="copyrightYear">2026</span> Lintech Innovations Corp. All rights reserved.</p>
+        <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-faint);">lintech.us.corp</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/blog.js"></script>
+  <script src="assets/js/main.js"></script>
 </body>
 </html>
