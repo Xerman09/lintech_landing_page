@@ -1,10 +1,56 @@
 // =========================================================
-// Lintech Innovations Corp. — Client Interactions
-// Clean, fast, and simple.
+// Lintech Innovations Corp. — Client Interactions & Animation Engine
+// Elegant, fast, failsafe, and 100% Hostinger Plug-and-Play compatible.
 // =========================================================
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Subtle scroll-aware header styling
+  // 1. Progressive Scroll Reveal (Zero blank states - failsafe)
+  if ('IntersectionObserver' in window) {
+    const revealTargets = document.querySelectorAll('.service-card, .pillar-box, .workflow-step, .faq-item, .inquiry-box, .section-header');
+    
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-revealed');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, {
+      rootMargin: '0px 0px -40px 0px',
+      threshold: 0.1
+    });
+
+    revealTargets.forEach((el, index) => {
+      el.classList.add('scroll-reveal');
+      // Subtle stagger delay if items are in the same grid
+      const delay = (index % 4) * 0.08;
+      if (delay > 0) {
+        el.style.transitionDelay = `${delay}s`;
+      }
+      observer.observe(el);
+    });
+  }
+
+  // 2. Smooth Anchor Navigation with Header Offset
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const targetId = this.getAttribute('href');
+      if (targetId && targetId !== '#') {
+        const targetEl = document.querySelector(targetId);
+        if (targetEl) {
+          e.preventDefault();
+          const headerHeight = document.querySelector('.site-header')?.offsetHeight || 70;
+          const targetPosition = targetEl.getBoundingClientRect().top + window.pageYOffset - headerHeight - 16;
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+        }
+      }
+    });
+  });
+
+  // 3. Subtle scroll-aware header styling
   const header = document.querySelector('.site-header');
   const handleScroll = () => {
     header?.classList.toggle('scrolled', window.scrollY > 15);
@@ -12,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
   handleScroll();
   window.addEventListener('scroll', handleScroll, { passive: true });
 
-  // 2. Mobile Menu Toggle
+  // 4. Mobile Menu Toggle
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
 
@@ -30,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 3. Interactive Service Pill Selector in Contact Form
+  // 5. Interactive Service Pill Selector in Contact Form
   const servicePills = document.getElementById('servicePills');
   const serviceInterestInput = document.getElementById('serviceInterest');
   if (servicePills && serviceInterestInput) {
@@ -43,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 4. Executive FAQ Accordion
+  // 6. Executive FAQ Accordion
   const faqItems = document.querySelectorAll('#faqAccordion .faq-item');
   faqItems.forEach(item => {
     const trigger = item.querySelector('.faq-trigger');
@@ -62,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 5. Clean Toast Notification
+  // 7. Clean Toast Notification
   function showToast(message) {
     let toast = document.getElementById('toast');
     if (!toast) {
@@ -84,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 4500);
   }
 
-  // 6. Contact / Inquiry Form Handler
+  // 8. Contact / Inquiry Form Handler
   const contactForm = document.getElementById('contactForm');
   if (contactForm) {
     contactForm.addEventListener('submit', e => {
@@ -101,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 7. Dynamic Copyright Year
+  // 9. Dynamic Copyright Year
   const yearEl = document.getElementById('copyrightYear');
   if (yearEl) {
     yearEl.textContent = new Date().getFullYear();
